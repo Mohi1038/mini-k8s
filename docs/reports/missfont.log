@@ -1,0 +1,5 @@
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecit1000
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecit1000
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecti0600
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecti0600
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecti0600

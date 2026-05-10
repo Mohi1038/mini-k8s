@@ -1,0 +1,4 @@
+Submitting task: alpine:latest (Priority: 1, CPU: 1, Mem: 128MB)...
+🚀 Task submitted successfully!
+Task ID: task-1775924562043810428
+Use './bin/m8s describe task task-1775924562043810428' for details.

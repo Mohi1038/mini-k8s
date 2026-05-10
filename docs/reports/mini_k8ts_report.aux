@@ -1,0 +1,95 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Problem Statement}{3}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}The Rise of Edge Computing}{3}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Limitations of Traditional Orchestration at the Edge}{3}{subsection.1.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Kubernetes Control-Plane Component Overhead}}{3}{table.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:k8s_overhead}{{1}{3}{Kubernetes Control-Plane Component Overhead}{table.caption.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}The Node Reliability Gap}{3}{subsection.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Literature Reference}{3}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Borg: Large-Scale Cluster Management at Google (2015)}{4}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Omega: Shared-State Schedulers (2013)}{4}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Mesos: Fine-Grained Resource Sharing (2011)}{4}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Firmament: Fast, Centralized Scheduling (2016)}{4}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Sparrow: Distributed, Low-Latency Scheduling (2013)}{4}{subsection.2.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Scheduler Characteristics vs.\ Mini-K8ts Design Goals}}{4}{table.caption.2}\protected@file@percent }
+\newlabel{tab:literature}{{2}{4}{Scheduler Characteristics vs.\ Mini-K8ts Design Goals}{table.caption.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Existing Results from Literature}{5}{section.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Control-Plane Resource Consumption: Published Benchmarks}}{5}{table.caption.3}\protected@file@percent }
+\newlabel{tab:existing_results}{{3}{5}{Control-Plane Resource Consumption: Published Benchmarks}{table.caption.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Implementation}{5}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}System Architecture Overview}{5}{subsection.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Mini-K8ts Full System Architecture}}{5}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:full_arch}{{1}{5}{Mini-K8ts Full System Architecture}{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}The Multi-Stage Scheduler}{5}{subsection.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Scheduler Reconciliation Loop --- Complete Flowchart}}{6}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:sched_flow}{{2}{6}{Scheduler Reconciliation Loop --- Complete Flowchart}{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Node Filtration Stage}{7}{subsection.4.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Node Filtration Predicates}}{7}{table.caption.6}\protected@file@percent }
+\newlabel{tab:filtration}{{4}{7}{Node Filtration Predicates}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Node Scoring: The Reliability Heuristic}{7}{subsection.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Node Scoring: Weighted Component Inputs}}{8}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:score_breakdown}{{3}{8}{Node Scoring: Weighted Component Inputs}{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Task Lifecycle State Machine}{8}{subsection.4.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Task Lifecycle State Machine}}{8}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:task_sm}{{4}{8}{Task Lifecycle State Machine}{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Worker Agent Reconciliation Loop}{8}{subsection.4.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Worker Agent Reconciliation Loop (per 2-second tick)}}{9}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:worker_loop}{{5}{9}{Worker Agent Reconciliation Loop (per 2-second tick)}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Heartbeat Protocol Sequence}{10}{subsection.4.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Heartbeat Protocol: Worker to Control Plane Sequence}}{10}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:hb_seq}{{6}{10}{Heartbeat Protocol: Worker to Control Plane Sequence}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.8}PostgreSQL Schema Design}{10}{subsection.4.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces \texttt  {nodes} table --- Worker registration and live health}}{10}{table.caption.11}\protected@file@percent }
+\newlabel{tab:schema_nodes}{{5}{10}{\texttt {nodes} table --- Worker registration and live health}{table.caption.11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces \texttt  {tasks} table --- The central scheduling queue}}{11}{table.caption.12}\protected@file@percent }
+\newlabel{tab:schema_tasks}{{6}{11}{\texttt {tasks} table --- The central scheduling queue}{table.caption.12}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Supporting tables --- Allocations and Namespace Quotas}}{11}{table.caption.13}\protected@file@percent }
+\newlabel{tab:schema_support}{{7}{11}{Supporting tables --- Allocations and Namespace Quotas}{table.caption.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.9}Shadow Resource Tracking}{11}{subsection.4.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Shadow Resource Tracking: Preventing Over-Allocation with Local Buffering}}{12}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:shadow_tracking}{{7}{12}{Shadow Resource Tracking: Preventing Over-Allocation with Local Buffering}{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.10}Job Autoscaler}{12}{subsection.4.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.11}User Interfaces and Monitoring}{12}{subsection.4.11}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Mini-K8ts CLI Tool: Cluster status and task monitoring}}{12}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:cli_screenshot}{{8}{12}{Mini-K8ts CLI Tool: Cluster status and task monitoring}{figure.caption.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Mini-K8ts Operations Dashboard in Grafana}}{13}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:grafana_dashboard}{{9}{13}{Mini-K8ts Operations Dashboard in Grafana}{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Experimental Results}{13}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Environment}{13}{subsection.5.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Experimental Environment Configuration}}{13}{table.caption.17}\protected@file@percent }
+\newlabel{tab:env}{{8}{13}{Experimental Environment Configuration}{table.caption.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Throughput and Convergence}{14}{subsection.5.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Scheduling Throughput vs.\ Batch Size}}{14}{table.caption.18}\protected@file@percent }
+\newlabel{tab:throughput}{{9}{14}{Scheduling Throughput vs.\ Batch Size}{table.caption.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Scheduling Convergence Time by Batch Size (bar chart)}}{14}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:conv_bar}{{10}{14}{Scheduling Convergence Time by Batch Size (bar chart)}{figure.caption.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Self-Healing Under 30\% Node Failure}{14}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Reliability and Efficiency Analysis}{14}{subsection.5.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Node Reliability vs.\ Task Success Ratio}}{15}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:reliability_success}{{11}{15}{Node Reliability vs.\ Task Success Ratio}{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Scheduler Cycle Time Allocation (Average per Tick)}}{15}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:time_pie}{{12}{15}{Scheduler Cycle Time Allocation (Average per Tick)}{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Comparison and Analysis}{15}{section.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Full Feature Comparison: Mini-K8ts vs.\ Competing Platforms}}{15}{table.caption.22}\protected@file@percent }
+\newlabel{tab:comparison}{{10}{15}{Full Feature Comparison: Mini-K8ts vs.\ Competing Platforms}{table.caption.22}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Case Study: Smart City Sensor Network}{16}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Deployment Scenario}{16}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Operational Results (30-Day Period)}{16}{subsection.7.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Smart City Deployment: 30-Day Operational Metrics}}{16}{table.caption.23}\protected@file@percent }
+\newlabel{tab:case_study}{{11}{16}{Smart City Deployment: 30-Day Operational Metrics}{table.caption.23}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{16}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Architecture Diagram (Detailed Layers)}{17}{section.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Mini-K8ts: Full Layered Architecture Diagram}}{17}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:detailed_arch}{{13}{17}{Mini-K8ts: Full Layered Architecture Diagram}{figure.caption.24}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10}Future Scope}{17}{section.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.1}Predictive Scheduling with LSTM}{17}{subsection.10.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2}WebAssembly Execution Runtime}{17}{subsection.10.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3}Federated Multi-Cluster}{17}{subsection.10.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4}Hardware-Aware Scheduling}{18}{subsection.10.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5}mTLS and Zero-Trust Security}{18}{subsection.10.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{18}{subsection.10.5}\protected@file@percent }
+\gdef \@abspage@last{20}

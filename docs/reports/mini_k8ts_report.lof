@@ -1,0 +1,10 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces Mini-K8ts Full System Architecture}}{7}{figure.caption.4}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Scheduler Reconciliation Loop --- Complete Flowchart}}{9}{figure.caption.5}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Node Scoring: Weighted Component Inputs}}{11}{figure.caption.7}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Task Lifecycle State Machine}}{11}{figure.caption.8}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Worker Agent Reconciliation Loop (per 2-second tick)}}{12}{figure.caption.9}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Heartbeat Protocol: Worker to Control Plane Sequence}}{13}{figure.caption.10}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Mini-K8ts CLI Tool: Cluster status and task monitoring}}{16}{figure.caption.14}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Mini-K8ts Operations Dashboard in Grafana}}{17}{figure.caption.15}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Scheduling Convergence Time by Batch Size (bar chart)}}{18}{figure.caption.18}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Mini-K8ts: Full Layered Architecture Diagram}}{20}{figure.caption.22}%

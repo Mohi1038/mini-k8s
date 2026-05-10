@@ -1,0 +1,13 @@
+\contentsline {table}{\numberline {1}{\ignorespaces Kubernetes Control-Plane Component Overhead}}{5}{table.caption.1}%
+\contentsline {table}{\numberline {2}{\ignorespaces Scheduler Characteristics vs.\ Mini-K8ts Design Goals}}{6}{table.caption.2}%
+\contentsline {table}{\numberline {3}{\ignorespaces Control-Plane Resource Consumption: Published Benchmarks}}{7}{table.caption.3}%
+\contentsline {table}{\numberline {4}{\ignorespaces Node Filtration Predicates}}{10}{table.caption.6}%
+\contentsline {table}{\numberline {5}{\ignorespaces \texttt {nodes} table --- Worker registration and live health}}{13}{table.caption.11}%
+\contentsline {table}{\numberline {6}{\ignorespaces \texttt {tasks} table --- The central scheduling queue}}{14}{table.caption.12}%
+\contentsline {table}{\numberline {7}{\ignorespaces Supporting tables --- Allocations and Namespace Quotas}}{14}{table.caption.13}%
+\contentsline {table}{\numberline {8}{\ignorespaces Experimental Environment Configuration}}{17}{table.caption.16}%
+\contentsline {table}{\numberline {9}{\ignorespaces Scheduling Throughput vs.\ Batch Size}}{18}{table.caption.17}%
+\contentsline {table}{\numberline {10}{\ignorespaces Resident Set Size (RSS) Memory Comparison}}{18}{table.caption.19}%
+\contentsline {table}{\numberline {11}{\ignorespaces Full Feature Comparison: Mini-K8ts vs.\ Competing Platforms}}{19}{table.caption.20}%
+\contentsline {table}{\numberline {12}{\ignorespaces Smart City Deployment: 30-Day Operational Metrics}}{19}{table.caption.21}%
+\contentsline {table}{\numberline {13}{\ignorespaces Common Failures and Automatic Mitigations}}{22}{table.caption.23}%
