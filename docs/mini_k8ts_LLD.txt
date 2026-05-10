@@ -1,0 +1,196 @@
+LOW LEVEL DESIGN (LLD)
+1. Project Structure (Go)
+kubernetes-mini/
+│
+├── cmd/
+│ ├── scheduler/
+│ ├── worker/
+│ └── cli/
+│
+├── internal/
+│ ├── api/
+│ ├── scheduler/
+│ ├── node/
+│ ├── task/
+│ ├── db/
+│ ├── metrics/
+│ ├── models/
+│ ├── config/
+│ └── utils/
+│
+├── pkg/
+│ ├── docker/
+│ ├── logger/
+│ └── client/
+│
+├── deployments/
+│ ├── docker-compose.yml
+│ └── k8s/ (optional)
+│
+├── scripts/
+├── tests/
+└── README.md
+
+2. Core Models
+Task
+type Task struct {
+ID
+string
+Image string
+CPU
+int
+Memory int
+Priority int
+Status string
+NodeID string
+}
+
+Node
+type Node struct {
+ID
+string
+TotalCPU int
+UsedCPU int
+TotalMemory int
+UsedMemory int
+Status
+string
+LastSeen time.Time
+Reliability float64
+}
+
+Allocation
+type Allocation struct {
+TaskID string
+NodeID string
+}
+
+3. APIs
+
+🔹 Submit Task
+POST /tasks
+Request:
+{
+"image": "nginx",
+"cpu": 2,
+"memory": 512,
+"priority": 1
+}
+Response:
+{
+"task_id": "task-123",
+"status": "PENDING"
+}
+
+🔹 Get Cluster State
+GET /cluster
+Response:
+{
+"nodes": [...],
+"tasks": [...]
+}
+
+🔹 Register Node
+POST /nodes/register
+{
+"node_id": "node-1",
+"cpu": 8,
+"memory": 16000
+}
+
+🔹 Heartbeat
+POST /nodes/heartbeat
+{
+"node_id": "node-1",
+"used_cpu": 2,
+"used_memory": 512
+}
+
+Auth + Rate Limit
+- Optional API key via X-Service-Key or Authorization: Bearer <token>
+- Optional fixed-window rate limit (RPM + burst) per client IP
+
+4. Scheduler Internals
+Interface (Pluggable)
+type Scheduler interface {
+Schedule(task Task, nodes []Node) (Node, error)
+}
+
+Filter
+func FilterNodes(task Task, nodes []Node) []Node
+●​ Resource check
+●​ Node status
+●​ Reliability threshold
+
+Score
+func ScoreNodes(task Task, nodes []Node) map[string]float64
+Factors:
+●​ Resource fit
+●​ Fragmentation + binpacking waste
+●​ Reliability + uptime + success ratio (adaptive profiler)
+●​ Priority-aware risk penalty
+
+Bind
+func BindTask(task Task, node Node) error
+
+5. Worker Node Logic
+Startup
+func RegisterNode()
+
+Heartbeat Loop
+func StartHeartbeat()
+●​ Send every 5 sec
+●​ Include resource usage
+
+Task Execution
+func ExecuteTask(task Task)
+●​ Pull Docker image
+●​ Run container
+●​ Monitor status
+
+6. Metrics Engine
+Tracks:
+●​ CPU utilization
+●​ Memory utilization
+●​ Scheduling latency
+
+●​ Task success rate
+●​ Node reliability
+●​ Fragmentation index + binpacking waste
+
+Example
+type Metrics struct {
+TotalTasks
+int
+FailedTasks int
+AvgLatency
+float64
+}
+
+7. Concurrency Model
+Scheduler
+●​ Goroutine:
+○​ scheduling loop
+○​ failure detector
+
+Worker
+●​ Goroutine:
+○​ heartbeat loop
+○​ execution workers
+
+8. Scale Testing Plan
+Simulate Nodes
+docker-compose up --scale worker=50
+
+Load Test
+●​ Submit 1000 tasks
+●​ Measure:
+○​ scheduling latency
+○​ resource utilization
+
+9. Adaptive Node Profiler
+- Reliability is updated on heartbeats, task results, and down transitions
+- Health score uses uptime, success ratio, and churn to bias scheduling
+- High priority tasks require higher health thresholds
+
+
