@@ -1,0 +1,126 @@
+{
+  "title": "mini-k8ts Cluster",
+  "uid": "mini-k8ts",
+  "schemaVersion": 37,
+  "version": 1,
+  "timezone": "browser",
+  "refresh": "5s",
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "Tasks by Status",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "mini_k8ts_tasks_total",
+          "legendFormat": "{{status}}"
+        }
+      ],
+      "gridPos": {"x": 0, "y": 0, "w": 12, "h": 8}
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "Nodes by Status",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "mini_k8ts_nodes_total",
+          "legendFormat": "{{status}}"
+        }
+      ],
+      "gridPos": {"x": 12, "y": 0, "w": 12, "h": 8}
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "Cluster CPU Used vs Total",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "mini_k8ts_cluster_cpu_used",
+          "legendFormat": "used"
+        },
+        {
+          "expr": "mini_k8ts_cluster_cpu_total",
+          "legendFormat": "total"
+        }
+      ],
+      "gridPos": {"x": 0, "y": 8, "w": 12, "h": 8}
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Cluster Memory Used vs Total",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "mini_k8ts_cluster_memory_used",
+          "legendFormat": "used"
+        },
+        {
+          "expr": "mini_k8ts_cluster_memory_total",
+          "legendFormat": "total"
+        }
+      ],
+      "gridPos": {"x": 12, "y": 8, "w": 12, "h": 8}
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "Average Node Reliability",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "avg(mini_k8ts_node_reliability)",
+          "legendFormat": "avg"
+        }
+      ],
+      "gridPos": {"x": 0, "y": 16, "w": 12, "h": 8}
+    },
+    {
+      "id": 6,
+      "type": "timeseries",
+      "title": "Fragmentation and Binpacking Waste",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "mini_k8ts_fragmentation_index",
+          "legendFormat": "fragmentation"
+        },
+        {
+          "expr": "mini_k8ts_binpacking_waste",
+          "legendFormat": "binpacking_waste"
+        }
+      ],
+      "gridPos": {"x": 12, "y": 16, "w": 12, "h": 8}
+    },
+    {
+      "id": 7,
+      "type": "timeseries",
+      "title": "Scheduling Latency (ms)",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "mini_k8ts_scheduling_latency_ms",
+          "legendFormat": "latency_ms"
+        }
+      ],
+      "gridPos": {"x": 0, "y": 24, "w": 12, "h": 8}
+    },
+    {
+      "id": 8,
+      "type": "timeseries",
+      "title": "Scheduling Attempts (avg)",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "mini_k8ts_scheduling_attempts_avg",
+          "legendFormat": "attempts"
+        }
+      ],
+      "gridPos": {"x": 12, "y": 24, "w": 12, "h": 8}
+    }
+  ]
+}

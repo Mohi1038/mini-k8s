@@ -1,0 +1,10 @@
+apiVersion: 1
+
+providers:
+  - name: mini-k8ts
+    folder: "mini-k8ts"
+    type: file
+    disableDeletion: true
+    editable: true
+    options:
+      path: /etc/grafana/provisioning/dashboards

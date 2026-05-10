@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  - job_name: "mini-k8ts"
+    static_configs:
+      - targets: ["scheduler:8080"]
+    metrics_path: "/metrics/prometheus"
