@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>mini-k8ts Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">mini-k8ts Project Overview</p>
+          <h1>Distributed Systems Cluster Visualization</h1>
+          <p class="lede">
+            A real-time overview of our cluster architecture, tracking node health, scheduling algorithms, and active workloads for the mini-k8ts course project.
+          </p>
+        </div>
+
+        <aside class="control-card">
+          <div class="field">
+            <label for="base-url">Scheduler API URL</label>
+            <input id="base-url" type="url" placeholder="http://localhost:8080" />
+          </div>
+          <div class="actions">
+            <button id="connect-button" type="button">Connect</button>
+            <button id="refresh-button" type="button" class="secondary">Refresh</button>
+          </div>
+          <p id="connection-status" class="status-line">Ready when you are.</p>
+        </aside>
+      </header>
+
+      <main class="dashboard-grid">
+        <section class="panel panel-wide">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Overview</p>
+              <h2>Cluster pulse</h2>
+            </div>
+            <div class="overview-meta">
+              <span class="badge">Read-only dashboard</span>
+              <span class="refresh-note" id="refresh-note">Last refresh: never</span>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <article class="stat-card">
+              <span class="stat-label">Nodes</span>
+              <strong id="stat-nodes">-</strong>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Ready</span>
+              <strong id="stat-ready">-</strong>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Running tasks</span>
+              <strong id="stat-running">-</strong>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Pending tasks</span>
+              <strong id="stat-pending">-</strong>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Jobs</span>
+              <strong id="stat-jobs">-</strong>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Services</span>
+              <strong id="stat-services">-</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel panel-wide">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Filters</p>
+              <h2>Focus the cluster view</h2>
+            </div>
+            <button id="clear-filters" type="button" class="secondary">Clear</button>
+          </div>
+          <div class="filters-grid">
+            <div class="field">
+              <label for="namespace-filter">Namespace</label>
+              <select id="namespace-filter">
+                <option value="">All namespaces</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="status-filter">Task status</label>
+              <select id="status-filter">
+                <option value="">All statuses</option>
+                <option value="RUNNING">RUNNING</option>
+                <option value="PENDING">PENDING</option>
+                <option value="FAILED">FAILED</option>
+                <option value="COMPLETED">COMPLETED</option>
+              </select>
+            </div>
+            <div class="field field-search">
+              <label for="search-filter">Search</label>
+              <input id="search-filter" type="search" placeholder="task, job, node, image..." />
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Insights</p>
+              <h2>What needs attention</h2>
+            </div>
+          </div>
+          <div id="insights-list" class="stack"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Namespaces</p>
+              <h2>Quota boundaries</h2>
+            </div>
+          </div>
+          <div id="namespaces-list" class="stack"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Nodes</p>
+              <h2>Capacity and health</h2>
+            </div>
+          </div>
+          <div id="nodes-list" class="stack"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Services</p>
+              <h2>Stable entry points</h2>
+            </div>
+          </div>
+          <div id="services-list" class="stack"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Details</p>
+              <h2>Selected item</h2>
+            </div>
+          </div>
+          <div id="detail-panel" class="detail-panel">
+            <div class="empty-state">Click a node, job, service, or task to inspect it.</div>
+          </div>
+        </section>
+
+        <section class="panel panel-wide">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Jobs</p>
+              <h2>Desired workload state</h2>
+            </div>
+          </div>
+          <div id="jobs-list" class="stack two-up"></div>
+        </section>
+
+        <section class="panel panel-wide">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Tasks</p>
+              <h2>Live workload queue</h2>
+            </div>
+          </div>
+          <div class="table-shell">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Namespace</th>
+                  <th>Status</th>
+                  <th>Node</th>
+                  <th>Image</th>
+                  <th>Attempts</th>
+                  <th>Secrets</th>
+                  <th>Volumes</th>
+                </tr>
+              </thead>
+              <tbody id="tasks-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <template id="empty-state-template">
+      <div class="empty-state">Nothing to show yet.</div>
+    </template>
+
+    <script src="./app.js" defer></script>
+  </body>
+  </html>
