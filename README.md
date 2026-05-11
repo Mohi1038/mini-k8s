@@ -372,6 +372,7 @@ graph TD
 ## Worker Reconciliation Loop
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor':'#000000', 'primaryBorderColor':'#000000', 'fontSize':'14px'}}}%%
 sequenceDiagram
     participant W as Worker
     participant API as Control Plane
