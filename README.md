@@ -122,12 +122,12 @@ graph LR
     B -->|No Fit| F["Backoff\nNext Attempt"]
     C -->|Low Score| F
     
-    style A fill:#e1f5ff
-    style B fill:#fff3e0
-    style C fill:#fce4ec
-    style D fill:#c8e6c9
-    style E fill:#a5d6a7
-    style F fill:#ffcdd2
+    style A fill:#e1f5ff,color:#000000
+    style B fill:#fff3e0,color:#000000
+    style C fill:#fce4ec,color:#000000
+    style D fill:#c8e6c9,color:#000000
+    style E fill:#a5d6a7,color:#000000
+    style F fill:#ffcdd2,color:#000000
 ```
 
 ---
@@ -355,10 +355,10 @@ graph TD
     
     E -->|Affects Future\nScheduling| H["Filter/Score"]
     
-    style B fill:#c8e6c9
-    style C fill:#ffcdd2
-    style G fill:#fff9c4
-    style H fill:#e1f5ff
+    style B fill:#c8e6c9,color:#000000
+    style C fill:#ffcdd2,color:#000000
+    style G fill:#fff9c4,color:#000000
+    style H fill:#e1f5ff,color:#000000
 ```
 
 **Scoring Factors:**
